@@ -225,15 +225,15 @@
         .nav-menu {
             position: fixed;
             top: 65px;
-            left: -100%;
-            width: 100%;
+            right: -100%;
+            width: 60%;
             //max-height: 0;
             background: white;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            transition: left 0.3s ease, max-height 0.5s ease;
+            transition: right 0.3s ease, max-height 0.5s ease;
             box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
             padding-top: 2rem;
             list-style: none;
@@ -241,7 +241,7 @@
 	    overflow: hidden;
         }
         .nav-menu.active {
-            left: 0;
+            right: 0;
 	    max-height: 50vh; /* Ajuste este valor se 50% for muito grande ou pequeno */
 	    overflow-y: auto;
         }
