@@ -261,6 +261,7 @@
             right: 0;
 	    max-height: 70vh;
 	    overflow-y: auto;
+        
         }
         .nav-menu a {
             text-decoration: none;
@@ -272,15 +273,12 @@
 	    min-height: 44px;
 	    display: flex;
 	    align-items: center;
-		width: fit-content; 
+		width: 100%; /* Garante que o link ocupe toda a largura disponível */	
         }
         .nav-menu a:hover {
             color: var(--accent);
         }
-	.nav-menu a:focus {
-	    outline: 3px solid rgba(122, 139, 118, 0.5);
-	    outline-offset: 2px;
-	}
+
         /* Hamburger */
         .hamburger {
             display: block;
@@ -831,8 +829,53 @@
                 overflow-x: hidden;
             }
         }
-    </style>
-</head>
+      
+ .sticky-cta {
+    position: fixed;
+    top: 65px; /* Abaixo do menu */
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    padding: 0.8rem 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .sticky-cta {
+        top: 60px;
+    }
+    .sticky-cta span {
+        font-size: 0.85rem;
+    }
+}
+``` 
+</style>
+
+<div class="sticky-cta" id="stickyBar" style="display: none;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1rem;">
+        <span style="font-size: 0.95rem; color: white;">Pronta para começar sua jornada?</span>
+        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
+           target="_blank"
+           class="btn"
+           style="font-size: 0.9rem; padding: 0.6rem 1.2rem;"
+           rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> Falar com Aline
+        </a>
+    </div>
+</div>
+  
+  
 <body>
     <!-- Navegação Mobile-First -->
     <nav id="navbar">
@@ -845,13 +888,11 @@
         </button>
         <ul class="nav-menu">
     <li><a href="#inicio">Início</a></li>
-    <li><a href="#sintomas">É para mim?</a></li>
-    <li><a href="#como-ajudar">Como ajuda</a></li>
-    <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#faq">FAQ</a></li>
     <li><a href="#sobre">Sobre</a></li>
-		</ul>
+    <li><a href="#faq">Dúvidas</a></li>
+</ul>
+        </ul>
     </nav>
     
     <!-- Header -->
@@ -866,89 +907,74 @@
    <i class="fab fa-whatsapp" aria-hidden="true"></i>
    Entrar em contato
 </a>
-            <a href="#sintomas" class="btn-outline">Será que é para mim?</a>
+            <a href="#como-ajudar" class="btn-outline">Como pode me ajudar?</a>
         </div>
     </header>
     
   <!-- Seção de Identificação Emocional - OPÇÃO 3 -->
-<section id="sintomas">
-    <h2 class="section-title">Se você sente:</h2>
+
+  <section id="sintomas">
+    <h2 class="section-title">Você se reconhece em algum destes sentimentos?</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 850px; margin: 2rem auto 0;">
         
-    <div style="max-width: 800px; margin: 2rem auto 0;">
-        
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Solidão profunda</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-heart-broken" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Solidão, mesmo estando acompanhada, e a sensação de que ninguém realmente entende o que você está vivendo.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Solidão, mesmo estando acompanhada, e a sensação de que ninguém realmente entende o que você está vivendo</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Culpa constante</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-weight-hanging" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Culpa por não estar aproveitando a oportunidade ou por não conseguir se adaptar como esperava.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Culpa por não estar aproveitando a oportunidade ou por não conseguir se adaptar como esperava</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Cansaço mental</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-battery-quarter" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Cansaço por precisar sempre "estar bem"  e a pressão silenciosa de ter que fazer tudo dar certo.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Cansaço por precisar sempre "estar bem" e a pressão silenciosa de ter que fazer tudo dar certo</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Dúvidas paralisantes</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-arrows-alt-h" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Dúvidas sobre ficar ou voltar, o que fazer na vida prossional e como lidar com os relacionamentos.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Dúvidas sobre ficar ou voltar, o que fazer na vida profissional e como lidar com os relacionamentos</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Crises emocionais</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-cloud-rain" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Vontade de chorar que aparece do nada, irritação com pequenas coisas, tristeza que não passa ou aquela sensação de estar travada.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Vontade de chorar que aparece do nada, irritação com pequenas coisas, tristeza que não passa ou sensação de estar travada</p>
         </div>
         
-        <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-                <span style="font-weight: 500;">Sensação de não pertencer</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        <div style="background: var(--white); padding: 1.2rem; border-radius: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--accent); display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 40px; height: 40px; flex-shrink: 0; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-map-marked-alt" style="color: var(--accent); font-size: 1.1rem;" aria-hidden="true"></i>
             </div>
-            <div class="faq-answer">
-                <p>Saudade que aperta no peito e a sensação de estar sempre "entre dois lugares" sem pertencer a nenhum.</p>
-            </div>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6;">Saudade que aperta no peito e a sensação de estar sempre "entre dois lugares" sem pertencer a nenhum</p>
         </div>
         
     </div>
     
-    <div class="whatsapp-container">
-        <p class="intro-text" style="font-weight: 500; color: var(--text);">Saiba que isso não é fraqueza, mas sinal de que você está carregando muito sozinha e que é hora de pedir apoio.</p>
-   </div>
-   
-    <div class="btn-container">
-        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." target="_blank" class="btn" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>   Preciso de ajuda
-            </a>
-            <a href="#como-ajudar" class="btn-outline">Como pode me ajudar?</a>
-         </div>
+    <p class="intro-text" style="font-weight: 500; color: var(--text); margin-top: 3rem; font-size: 1.1rem;">Se você se reconheceu em algum desses pontos, saiba que <strong>isso não é fraqueza</strong>. É sinal de que você está carregando muito sozinha e que é hora de pedir apoio.</p>
+    
+    <div class="btn-container" style="margin-top: 2rem;">
+        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
+           target="_blank" 
+           class="btn"
+           rel="noopener noreferrer">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Preciso de ajuda
+        </a>
+    </div>
 </section>
+  
+  
   
   <!-- Como a terapia pode te ajudar -->
 <section id="como-ajudar">
@@ -993,21 +1019,10 @@
     border-right: 4px solid var(--primary);
 ">
     <p style="text-align: center; font-weight: 500; color: var(--text); margin: 0; font-size: 1.1rem;">
-        Trabalho com <strong>práticas baseadas em evidências</strong>, principalmente terapias comportamentais, cognitivo-comportamentais (TCC) e contextuais. 
+        Trabalho com práticas baseadas em evidências, principalmente terapias comportamentais, cognitivo-comportamentais (TCC) e contextuais. 
         Integro essas abordagens à minha experiência clínica e às suas necessidades e possibilidades, para que o atendimento seja realmente personalizado, pensado junto com você.
     </p>
 </div>
-
-    <div class="btn-container" style="margin-top: 2.5rem;">
-        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
-           target="_blank" 
-           class="btn"
-           rel="noopener noreferrer">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>   Quero ser atendida
-</a>
-              </a>
-            <a href="#como-funciona" class="btn-outline">Como funciona?</a>
-    </div>
 </section>
   
   <!-- Como funciona na prática -->
@@ -1044,20 +1059,8 @@
     
     <div style="max-width: 800px; margin: 3rem auto 0; text-align: center;">
         <p style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Frequência:</strong> Geralmente semanal, no mesmo horário, que fica reservado para você.</p>
-        <p style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Formas de pagamento:</strong> Aceito <strong>Pix</strong> (para quem mantém conta no Brasil) e <strong>transferência internacional</strong> (Wise, PayPal), em euros ou reais. Você escolhe o que for mais prático.</p>
-      <p style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Quanto custa:</strong> A sessão de psicoterapia individual custa <strong>a partir de 30 euros</strong>, com possibilidade de pacotes de sessões com desconto. 
-Os demais serviços funcionam em formato de pacote, definido de acordo com o caso e o número de sessões combinadas.</p>
-        </div>
-    
-    <div class="btn-container" style="margin-top: 3rem;">
-        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
-           target="_blank" 
-           class="btn"
-           rel="noopener noreferrer">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>   Quero começar agora
-                  </a>
-            <a href="#servicos" class="btn-outline">Quais os serviços?</a>
-            </div>
+        <p style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Formas de pagamento:</strong> Aceito <strong>Pix</strong> (para quem mantém conta no Brasil) e <strong>transferência internacional</strong> (Wise, PayPal), em euros ou reais.</p>
+       </div>
 </section>
   
       <!-- Serviços -->
@@ -1095,16 +1098,32 @@ Os demais serviços funcionam em formato de pacote, definido de acordo com o cas
 	<div class="whatsapp-container">
 	    <p class="invite-text">Se algum desses caminhos faz sentido para você, ficarei feliz em te acompanhar. Vamos conversar?</p>
 	</div>
-	    <div class="btn-container">
-        	<a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
-	           target="_blank" 
-        	   class="btn"
-	           rel="noopener noreferrer">
-        	    <i class="fab fa-whatsapp" aria-hidden="true"></i>   Mandar um WhatsApp
-	        </a>
-            <a href="#faq" class="btn-outline">Ainda tenho dúvida</a>
-		</div>
+	   <div class="btn-container" style="margin-top: 3rem;">
+        <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
+           target="_blank" 
+           class="btn"
+           rel="noopener noreferrer">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>   Mandar um WhatsApp
+                  </a>
     </section>
+
+<!-- Sobre -->
+    <section id="sobre">
+        <div class="sobre-container">
+            <div class="sobre-img">
+                <img src="photo-01.6.jpg" 
+                     alt="Aline Medeiros Psicoterapia" 
+                     loading="lazy"
+                     width="200" 
+                     height="200">
+            </div>
+            <div class="sobre-text">
+                <h2>Quem sou eu</h2>
+		<p>Sou a Aline Medeiros, formada em Psicologia e Pedagogia no Brasil, mestrado na Espanha e fiz diversas formações e especializações, incluindo a formação em Psicologia Intercultural Aplicada à Clínica de Brasileiros no Exterior, o que me especializou no atendimento de brasileiras como você, que vivem ou planejam viver no exterior.</p>
+ <p>Também sou imigrante e vivi a experiência de enfrentar solidão, tristeza e a sensação de não pertencer, além do desafio de reconstruir minha identidade em um novo contexto. Essa vivência me mostrou que, muitas vezes, o que mais faz diferença é ser ouvida e compreendida com sensibilidade a esta experiência tão particular, e reconhecer a importância deste olhar especializado é que me trouxe a este momento de oferecer a você este serviço focado na experiência da imigração.</p>
+		<p>Minha trajetória pessoal e profissional me permite acompanhar cada mulher respeitando seu ritmo e sua história. Se a jornada estiver pesada, podemos organizar juntas seus sentimentos, reconhecer o que causa seu sofrimento e encontrar caminhos que te levem a ter a vida que deseja. É possível atravessar cada mudança com mais confiança, clareza e gentileza consigo mesma.</p>
+    </section>   
+
 
 <!-- FAQ -->
     <section id="faq">
@@ -1137,11 +1156,8 @@ Os demais serviços funcionam em formato de pacote, definido de acordo com o cas
         <i class="fas fa-chevron-down" aria-hidden="true"></i>
     </div>
     <div class="faq-answer">
-        <p>O investimento varia conforme o serviço escolhido. 
-  A sessão de <strong>Psicoterapia</strong> custa a partir de €30 por sessão</li>. A <strong>Mentoria "Raízes e Recomeços"</strong> e a <strong>Consultoria "Emoção em Movimento"</strong> são pacotes personalizados, portanto o preço é definido de acordo com o caso e o número de sessões combinadas.
-        <p>Aceito <strong>Pix</strong> (para quem mantém conta no Brasil) e <strong>transferência internacional</strong> (Wise, PayPal) tanto em euros como em reais.</p>
-      <p>Durante nossa primeira conversa, explico os investimentos com transparência para que você possa avaliar com calma.</p>
-  <p>Mas pense assim: qual o preço de você conseguir dormir tranquila, tomar decisões com clareza e se sentir melhor? O valor da terapia é um investimento em você mesma. </p>
+    <p>O investimento varia conforme o serviço e a frequência das sessões.</p>
+    <p>Durante nossa primeira conversa, explico os valores com transparência e, se necessário, podemos avaliar formas de viabilizar o atendimento.</p>
     </div>
 </article>
 			<article class="faq-item">
@@ -1177,38 +1193,12 @@ Os demais serviços funcionam em formato de pacote, definido de acordo com o cas
 	           target="_blank" 
         	   class="btn"
 	           rel="noopener noreferrer">
-        	    <i class="fab fa-whatsapp" aria-hidden="true"></i>   Agendar meu atendimento
+        	    <i class="fab fa-whatsapp" aria-hidden="true"></i>   Agendar atendimento
 	        </a>
           		</div>
         </div>
     </section>
 
-<!-- Sobre -->
-    <section id="sobre">
-        <div class="sobre-container">
-            <div class="sobre-img">
-                <img src="sobre.jpg" 
-                     alt="Aline Medeiros Psicoterapia" 
-                     loading="lazy"
-                     width="200" 
-                     height="200">
-            </div>
-            <div class="sobre-text">
-                <h2>Quem sou eu</h2>
-		<p>Sou a Aline Medeiros, formada em Psicologia e Pedagogia no Brasil, mestrado na Espanha e fiz diversas formações e especializações, incluindo a formação em Psicologia Intercultural Aplicada à Clínica de Brasileiros no Exterior, o que me especializou no atendimento de brasileiras como você, que vivem ou planejam viver no exterior.</p>
- <p>Também sou imigrante e vivi a experiência de enfrentar solidão, tristeza e a sensação de não pertencer, além do desafio de reconstruir minha identidade em um novo contexto. Essa vivência me mostrou que, muitas vezes, o que mais faz diferença é ser ouvida e compreendida com sensibilidade a esta experiência tão particular, e reconhecer a importância deste olhar especializado é que me trouxe a este momento de oferecer a você este serviço focado na experiência da imigração.</p>
-		<p>Minha trajetória pessoal e profissional me permite acompanhar cada mulher respeitando seu ritmo e sua história. Se a jornada estiver pesada, podemos organizar juntas seus sentimentos, reconhecer o que causa seu sofrimento e encontrar caminhos que te levem a ter a vida que deseja. É possível atravessar cada mudança com mais confiança, clareza e gentileza consigo mesma.</p>
-
-
-                <a href="https://wa.me/5512996262275?text=Ol%C3%A1%2C%20Aline!%20Meu%20nome%20%C3%A9%20[seu%20nome]%20e%20estou%20entrando%20em%20contato%20de%20[cidade/pa%C3%ADs]." 
-                   target="_blank" 
-                   class="btn"
-                   rel="noopener noreferrer">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i>   Falar com Aline
-                </a>
-            </div>
-        </div>
-    </section>   
 
   <!-- Footer -->
     <footer>
@@ -1368,6 +1358,18 @@ Os demais serviços funcionam em formato de pacote, definido de acordo com o cas
         preloadFont.crossOrigin = 'anonymous';
         preloadFont.href = 'https://fonts.gstatic.com/s/lora/v23/0QIvMX1D_JOuMw_hK0U4Ks8.woff2';
         document.head.appendChild(preloadFont);
+      
+// Aparece quando sai do header
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('inicio');
+    const stickyBar = document.getElementById('stickyBar');
+    
+    if (window.scrollY > header.offsetHeight) {
+        stickyBar.style.display = 'block';
+    } else {
+        stickyBar.style.display = 'none';
+    }
+});      
     </script>
 </body>
 </html>
