@@ -889,14 +889,10 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
-<script type="text/javascript">
+<script>
   var Tawk_API = Tawk_API || {};
-  // Quando o chat for iniciado pelo cliente
-  Tawk_API.onChatStarted = function(){
-    gtag('event', 'chat_tawk_iniciado', {
-      'event_category': 'engagement',
-      'event_label': 'tawk.to'
-    });
+  Tawk_API.onChatStarted = function() {
+    gtag('event', 'chat_tawk_iniciado');
   };
 </script>
 	
